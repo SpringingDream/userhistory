@@ -6,7 +6,8 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "type")
 @JsonSubTypes({
-        @JsonSubTypes.Type(value = PurchaseAction.class, name = "purchase")
+        @JsonSubTypes.Type(value = PurchaseAction.class, name = "purchase"),
+        @JsonSubTypes.Type(value = RatingAction.class, name = "rating")
 })
 interface Action {
 }
