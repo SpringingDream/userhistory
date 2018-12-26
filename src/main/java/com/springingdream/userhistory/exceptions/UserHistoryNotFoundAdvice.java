@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @ControllerAdvice
 public class UserHistoryNotFoundAdvice {
     @ResponseBody
-    @ExceptionHandler(UserHistoryNotFoundException.class)
+    @ExceptionHandler(HistoryNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    String notFound(UserHistoryNotFoundException e) {
+    String notFound(HistoryNotFoundException e) {
         return e.getMessage();
     }
 }
