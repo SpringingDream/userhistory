@@ -20,9 +20,7 @@ public class PassportService {
     public PassportService(RestTemplate template, @Qualifier("eurekaClient") EurekaClient eurekaClient) {
         Application application = eurekaClient.getApplication("marketplace-passport");
         InstanceInfo instanceInfo = application.getInstances().get(0);
-        String ip = instanceInfo.getHostName();
-        int port = instanceInfo.getPort();
-//        url = instanceInfo.getHomePageUrl() + "api/passport";
+        url = instanceInfo.getHomePageUrl();
         this.template = template;
     }
 

@@ -7,7 +7,6 @@ import com.springingdream.userhistory.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClientException;
@@ -23,9 +22,7 @@ public class ProductsService {
     public ProductsService(RestTemplate template, @Qualifier("eurekaClient") EurekaClient eurekaClient) {
         Application application = eurekaClient.getApplication("marketplace-products");
         InstanceInfo instanceInfo = application.getInstances().get(0);
-        String hostname = instanceInfo.getHostName();
-        int port = instanceInfo.getPort();
-//        url = "http://" + hostname + ":" + port + "/products";
+        url = instanceInfo.getHomePageUrl();
         this.template = template;
     }
 
